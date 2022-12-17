@@ -209,6 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3508674368759601356}
+  - component: {fileID: 3580568357781216179}
   m_Layer: 0
   m_Name: Pilone_Elec
   m_TagString: Untagged
@@ -232,6 +233,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3580568357781216179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372728096092672002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.77, y: 8.84, z: 0.83}
+  m_Center: {x: 0.12, y: 4.02, z: 1.08}
 --- !u!1 &6526924263965239704
 GameObject:
   m_ObjectHideFlags: 0
