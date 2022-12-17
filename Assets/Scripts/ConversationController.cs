@@ -36,7 +36,7 @@ public class ConversationController : MonoBehaviour
     private void LoadSODialogue(SODialogue soDialogue)
     {
         _currentDialogue = soDialogue;
-        _imgPortrait.sprite = _currentDialogue.ImgPortrait;
+        if( soDialogue.ImgPortrait) _imgPortrait.sprite = _currentDialogue.ImgPortrait;
         _txtTitle.text = _currentDialogue.Title;
         _txtDiscution.text = _currentDialogue.Text;
 

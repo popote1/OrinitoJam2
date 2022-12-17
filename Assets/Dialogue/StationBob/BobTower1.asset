@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d898f8dbd6581548925a019d6579757, type: 3}
+  m_Name: BobTower1
+  m_EditorClassIdentifier: 
+  ImgPortrait: {fileID: 21300000, guid: d539fc76adb63c646a3f3a17ac5ab1d6, type: 3}
+  Title: Bob Tower
+  Text: "Ha bas vous \xEAtes venue jusca moi !"
+  ChoiceConsequences:
+  - Note: "Tien J'ai trouve cette chanson  , \xE7a vous parle ?"
+    ChoiceCondition: 1
+    NextDialogue: {fileID: 11400000, guid: 902423e4576d4ae4f89f35ce3ee519cf, type: 2}
+    GazGain: 0
+    ChoiceIndex: 0
+    ChoiceChange: 0
+    IsQuit: 0
+    RemoveTriggerOnExite: 0
+  - Note: ' Done moi ton essence'
+    ChoiceCondition: 0
+    NextDialogue: {fileID: 0}
+    GazGain: 10
+    ChoiceIndex: 0
+    ChoiceChange: 0
+    IsQuit: 1
+    RemoveTriggerOnExite: 1
+  - Note: Aurevoir
+    ChoiceCondition: 0
+    NextDialogue: {fileID: 0}
+    GazGain: 0
+    ChoiceIndex: 0
+    ChoiceChange: 0
+    IsQuit: 1
+    RemoveTriggerOnExite: 0
