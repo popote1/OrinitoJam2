@@ -979,6 +979,7 @@ GameObject:
   - component: {fileID: 6536041440614654778}
   - component: {fileID: 6536041440614654779}
   - component: {fileID: 6536041440614654772}
+  - component: {fileID: 447299634}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1060,10 +1061,25 @@ BoxCollider:
   m_GameObject: {fileID: 6536041440614654774}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.787023, y: 0.2715981, z: 4.661456}
   m_Center: {x: 0.00000023841858, y: 0.36420095, z: -1.8987126}
+--- !u!114 &447299634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041440614654774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0517e27dca3e094686baf799878e891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SparksObject: {fileID: 8303501186424132530, guid: ddfdbcc57a3bfc14e9187b1016ca0703,
+    type: 3}
+  MinPowerSparks: 2
 --- !u!1 &6536041440633896552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1092,7 @@ GameObject:
   - component: {fileID: 6536041440633896556}
   - component: {fileID: 6536041440633896557}
   - component: {fileID: 6536041440633896558}
+  - component: {fileID: 1992513197}
   m_Layer: 2
   m_Name: Car
   m_TagString: Untagged
@@ -1157,10 +1174,25 @@ BoxCollider:
   m_GameObject: {fileID: 6536041440633896552}
   m_Material: {fileID: 13400000, guid: 4386d94443388ea4687e82c2a03ff33e, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.76923925, y: 2.1526325, z: 0.7372904}
   m_Center: {x: -0.005304351, y: 0.8170248, z: 0.0009982577}
+--- !u!114 &1992513197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041440633896552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0517e27dca3e094686baf799878e891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SparksObject: {fileID: 8303501186424132530, guid: ddfdbcc57a3bfc14e9187b1016ca0703,
+    type: 3}
+  MinPowerSparks: 2
 --- !u!1 &6536041440724742791
 GameObject:
   m_ObjectHideFlags: 0
@@ -10858,9 +10890,15 @@ GameObject:
   - component: {fileID: 6536041441342823069}
   - component: {fileID: 6536041441342823070}
   - component: {fileID: 6536041441342823071}
+  - component: {fileID: 816767460}
+  - component: {fileID: 816767464}
+  - component: {fileID: 816767461}
+  - component: {fileID: 816767463}
+  - component: {fileID: 138283903855811056}
+  - component: {fileID: 2617897024371709145}
   m_Layer: 0
   m_Name: Car2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10903,8 +10941,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720a5e747d73d274ca8d247679f0c812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanControl: 0
-  OnStopDrag: 0
+  CanControl: 1
+  IsAccelerate: 0
+  OnStopDrag: 10
   RB: {fileID: 6536041441342823071}
   AccelerationPower: 75
   MaxSpeed: 30
@@ -11093,6 +11132,94 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &816767460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041441342823064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5037241, z: 1.7756844}
+  m_Center: {x: 0, y: 0.24813795, z: -0.38784218}
+--- !u!65 &816767464
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041441342823064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.86, y: 1.65, z: 4.88}
+  m_Center: {x: 0, y: 0.63, z: 0.15}
+--- !u!114 &816767461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041441342823064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9fc12faf46ffc41b1a437955b10594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carController: {fileID: 6536041441342823070}
+  _hudManager: {fileID: 0}
+  _conversationController: {fileID: 0}
+  _currentTriggerZone: {fileID: 0}
+  _maxSpeedToInteract: 2
+  _maxGaz: 50
+  _gazDecrease: 1
+--- !u!114 &816767463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041441342823064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0517e27dca3e094686baf799878e891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SparksObject: {fileID: 8303501186424132530, guid: ddfdbcc57a3bfc14e9187b1016ca0703,
+    type: 3}
+  MinPowerSparks: 2
+--- !u!136 &138283903855811056
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041441342823064}
+  m_Material: {fileID: 13400000, guid: 4386d94443388ea4687e82c2a03ff33e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9
+  m_Height: 4.91
+  m_Direction: 2
+  m_Center: {x: 0.5, y: 0.6, z: 0.15}
+--- !u!136 &2617897024371709145
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536041441342823064}
+  m_Material: {fileID: 13400000, guid: 4386d94443388ea4687e82c2a03ff33e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9
+  m_Height: 4.91
+  m_Direction: 2
+  m_Center: {x: -0.5, y: 0.6, z: 0.15}
 --- !u!1 &6536041441491076253
 GameObject:
   m_ObjectHideFlags: 0

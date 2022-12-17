@@ -8,6 +8,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollisionSparks.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlaneCSharp/ChoiseConsequence.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIButtonDialogueComponent.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -68,7 +70,9 @@
       <option name="presentableId" value="Default" />
       <updated>1671263222407</updated>
       <workItem from="1671263226229" duration="2848000" />
-      <workItem from="1671267899201" duration="2214000" />
+      <workItem from="1671267899201" duration="4850000" />
+      <workItem from="1671274971403" duration="10000" />
+      <workItem from="1671275012709" duration="1412000" />
     </task>
     <servers />
   </component>

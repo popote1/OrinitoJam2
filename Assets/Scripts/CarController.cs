@@ -10,6 +10,7 @@ using UnityEngine.Serialization;
 public class CarController : MonoBehaviour
 {
     public bool CanControl;
+    public bool IsAccelerate;
     public float OnStopDrag;
     public Rigidbody RB;
     [Header("Control")] 
@@ -62,6 +63,8 @@ public class CarController : MonoBehaviour
         if (CanControl) {
             rot = Input.GetAxisRaw("Horizontal");
             accel = (WeelContact / 4f) * Input.GetAxisRaw("Vertical");
+            
+            IsAccelerate = Input.GetAxisRaw("Vertical")>0.2f;
         }
 
         WeelContact= 0;
