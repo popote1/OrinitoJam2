@@ -34,9 +34,12 @@ public class CarController : MonoBehaviour
     public float WeelyOffset;
     [Header("PSWeels")] public ParticleSystem[] PSWeels;
     public float MinSpeedPSOn = 1;
-    
+
     [Space(5)]
     public int WeelContact;
+
+    [Header("Audio")] public AudioSource AsMotorSound;
+    public AnimationCurve PitchOverSpeedCurve;
 
 
     public bool IsSlowerThan(float value) => RB.velocity.magnitude < value;
@@ -129,5 +132,16 @@ public class CarController : MonoBehaviour
 
         RB.AddForce(Vector3.down*Gravity);
         //Debug.Log(RB.velocity.magnitude);
+
+        if (CanControl) {
+            float value = PitchOverSpeedCurve.Evaluate(RB.velocity.magnitude / MaxSpeed);
+            if (WeelContact == 0) value += 0.4f;
+            AsMotorSound.pitch = value;
+           
+        }
+        else
+        {
+            
+        }
     }
 }
