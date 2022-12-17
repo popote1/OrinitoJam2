@@ -7,12 +7,14 @@ using UnityEngine;
 public class TriggerZone : MonoBehaviour
 {
     public GameObject InteractableIdicator;
+    public SODialogue Dialogue;
 
     public bool IsInteractive;
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        if (Dialogue == null) {
+            Debug.LogWarning("Dialogue non Attribuer dans l'objet "+transform.name);
+        }
     }
 
     // Update is called once per frame
