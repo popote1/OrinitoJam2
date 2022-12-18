@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class UIButtonFeedBack : MonoBehaviour ,IPointerEnterHandler , IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
@@ -15,6 +17,12 @@ public class UIButtonFeedBack : MonoBehaviour ,IPointerEnterHandler , IPointerEx
     [Header("Rotation Options")]
     public bool UsRotation=true;
     public Vector3 EndRotation = new Vector3(0,0,2);
+
+    [Header("Sounds")] 
+    [Range(0,1)]public float AnimInvolume = 1;
+    public AudioClip[] AnimInClps;
+    [Range(0,1)]public float AnimOutvolume = 1;
+    public AudioClip[] AnimOutClps;
     // Start is called before the first frame update
 
     private void PlayAnimationIn()
@@ -24,6 +32,9 @@ public class UIButtonFeedBack : MonoBehaviour ,IPointerEnterHandler , IPointerEx
         transform.localScale = Vector3.one;
         if (UsScale) transform.DOScale(EndSize, AnimationTime).SetEase(AnimationCurve);
         if(UsRotation)transform.DORotate(EndRotation, AnimationTime);
+        if (AudioManager.Instance != null) {
+            AudioManager.Instance.PlaySFX(AnimInClps[Random.Range(0,AnimInClps.Length)], AnimInvolume);
+        }
     }
     private void PlayAnimationOut()
     {
@@ -32,6 +43,9 @@ public class UIButtonFeedBack : MonoBehaviour ,IPointerEnterHandler , IPointerEx
         transform.localScale = Vector3.one*EndSize;
         if (UsScale) transform.DOScale(1, AnimationTime).SetEase(AnimationCurve);
         if(UsRotation)transform.DORotate(Vector3.zero, AnimationTime);
+        if (AudioManager.Instance != null) {
+            AudioManager.Instance.PlaySFX(AnimOutClps[Random.Range(0,AnimOutClps.Length)], AnimOutvolume);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
