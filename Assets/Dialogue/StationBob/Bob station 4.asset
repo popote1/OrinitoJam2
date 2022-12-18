@@ -20,7 +20,7 @@ MonoBehaviour:
     ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 902423e4576d4ae4f89f35ce3ee519cf, type: 2}
     GazGain: 30
-    ChoiceIndex: 2
+    ChoiceIndex: 0
     ChoiceChange: 0
     IsQuit: 1
     RemoveTriggerOnExite: 1

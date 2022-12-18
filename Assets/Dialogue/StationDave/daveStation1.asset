@@ -28,15 +28,15 @@ MonoBehaviour:
     ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
     GazGain: 10
-    ChoiceIndex: 1
-    ChoiceChange: 1
-    IsQuit: 0
-    RemoveTriggerOnExite: 0
+    ChoiceIndex: 0
+    ChoiceChange: 0
+    IsQuit: 1
+    RemoveTriggerOnExite: 1
   - Note: No thank you, I'll be safe for the next station
     ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
-    GazGain: 30
-    ChoiceIndex: 1
-    ChoiceChange: 1
-    IsQuit: 0
-    RemoveTriggerOnExite: 0
+    GazGain: 0
+    ChoiceIndex: 0
+    ChoiceChange: 0
+    IsQuit: 1
+    RemoveTriggerOnExite: 1

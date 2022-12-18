@@ -19,9 +19,9 @@ MonoBehaviour:
   ChoiceConsequences:
   - Note: oh...
     ChoiceCondition: 0
-    NextDialogue: {fileID: 11400000, guid: 902423e4576d4ae4f89f35ce3ee519cf, type: 2}
+    NextDialogue: {fileID: 11400000, guid: 7f2060af338d65e40833481b7ab154a7, type: 2}
     GazGain: 0
-    ChoiceIndex: 2
+    ChoiceIndex: 0
     ChoiceChange: 0
     IsQuit: 0
-    RemoveTriggerOnExite: 1
+    RemoveTriggerOnExite: 0

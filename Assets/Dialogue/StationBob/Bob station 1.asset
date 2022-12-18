@@ -17,7 +17,7 @@ MonoBehaviour:
   Text: Oh? Customers, you've come this far !
   ChoiceConsequences:
   - Note: yep, do you have some gas left?
-    ChoiceCondition: 1
+    ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 902423e4576d4ae4f89f35ce3ee519cf, type: 2}
     GazGain: 0
     ChoiceIndex: 0

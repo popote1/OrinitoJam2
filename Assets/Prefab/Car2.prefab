@@ -11246,7 +11246,7 @@ MonoBehaviour:
   - {fileID: 6536041440765507113}
   - {fileID: 6536041440962238044}
   - {fileID: 6536041442305948879}
-  MinSpeedPSOn: 5
+  MinSpeedPSOn: 2
   WeelContact: 0
   AsMotorSound: {fileID: 816767467}
   PitchOverSpeedCurve:
@@ -11324,7 +11324,7 @@ MonoBehaviour:
   _conversationController: {fileID: 0}
   IsPlayng: 0
   _currentTriggerZone: {fileID: 0}
-  _maxSpeedToInteract: 2
+  _maxSpeedToInteract: 10
   _maxGaz: 50
   _gazDecrease: 1
   _musics:

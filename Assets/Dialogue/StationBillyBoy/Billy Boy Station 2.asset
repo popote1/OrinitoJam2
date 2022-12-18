@@ -31,4 +31,4 @@ MonoBehaviour:
     ChoiceIndex: 0
     ChoiceChange: 0
     IsQuit: 1
-    RemoveTriggerOnExite: 0
+    RemoveTriggerOnExite: 1
