@@ -41,7 +41,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461664377479862575}
-  - component: {fileID: 5727027292920451242}
   m_Layer: 0
   m_Name: Road_Turn_2
   m_TagString: Untagged
@@ -65,19 +64,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5727027292920451242
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754909725556053587}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.6, y: 1, z: 13.71}
-  m_Center: {x: 1.14, y: 0.13, z: 0.79}
 --- !u!1 &4616060086324008287
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +75,7 @@ GameObject:
   - component: {fileID: 6579445625863801035}
   - component: {fileID: 3085253899237947815}
   - component: {fileID: 8669309089387545018}
+  - component: {fileID: 2586906668271617}
   m_Layer: 0
   m_Name: Road_3
   m_TagString: Untagged
@@ -161,3 +148,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2586906668271617
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616060086324008287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4832569131034543657, guid: 0b5226c73b9516c4ea936deb3eb11169, type: 3}
