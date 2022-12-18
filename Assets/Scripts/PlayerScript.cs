@@ -21,6 +21,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private SOMusic[] _musics;
     [SerializeField] private AudioSource _asMusic;
+    [Range(0,1)]public float WalkManSFXVolume = 1;
+    public AudioClip[] WalkManSFXClips;
     
     
     
@@ -53,12 +55,11 @@ public class PlayerScript : MonoBehaviour
     }
     void Start() {
         _gaz = _maxGaz;
-        if (_musics != null && _musics.Length > 0) {
-            _asMusic.clip = _musics[0].AudioClip;
+        if (AudioManager.Instance !=null&&_musics != null && _musics.Length > 0) {
+            AudioManager.Instance.PlayMusic(_musics[0].AudioClip);
             _currentMusic = 0;
             _hudManager.SetMusicData(_musics[0]);
             _musicIsPlaying = true;
-            _asMusic.Play();
         }
     }
 
@@ -127,9 +128,11 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void ChangeSong(int value) {
+        if (AudioManager.Instance == null) return;
         _currentMusic = (_currentMusic + value) % _musics.Length ;
-        _asMusic.clip = _musics[_currentMusic].AudioClip;
+        AudioManager.Instance.PlayMusic(_musics[_currentMusic].AudioClip);
         _hudManager.SetMusicData(_musics[_currentMusic]);
-        _asMusic.Play();
+        AudioManager.Instance.PlaySFX(WalkManSFXClips[Random.Range(0,WalkManSFXClips.Length)],WalkManSFXVolume);
+        
     }
 }

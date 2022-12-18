@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CollisionSparks : MonoBehaviour
 {
     public GameObject SparksObject;
     public float MinPowerSparks = 2;
+    [Range(0,1)]public float ColisionVolume = 1;
+    public AudioClip[] CollisionClips;
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.relativeVelocity.magnitude);
@@ -15,6 +18,9 @@ public class CollisionSparks : MonoBehaviour
         {
            GameObject go = Instantiate(SparksObject, collision.contacts[0].point, transform.rotation);
            Destroy(go, 2);
+           if (AudioManager.Instance != null) {
+               AudioManager.Instance.PlaySFX(CollisionClips[Random.Range(0,CollisionClips.Length)], ColisionVolume);
+           }
         }
     }
 }
