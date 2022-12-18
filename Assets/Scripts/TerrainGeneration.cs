@@ -83,8 +83,6 @@ public class TerrainGeneration : MonoBehaviour
       Vector2Int cor = GetCordinatesFromWorldPos(TransformTraked.position);
       TerrainCell cell = GetCell(cor);
       if (Path.Contains(cell)) ChangeCurrentIndex( Path.IndexOf(cell));
-      
-      Debug.Log(cor);
    }
 
    private void ChangeCurrentIndex(int newIndex)
