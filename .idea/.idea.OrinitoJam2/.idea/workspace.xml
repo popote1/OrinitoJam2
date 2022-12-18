@@ -12,6 +12,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollisionSparks.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameStarTer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HUDManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/InteractibleTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlaneCSharp/ChoiseConsequence.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlaneCSharp/TerrainCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SOMusic.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,7 +81,7 @@
       <workItem from="1671267899201" duration="4850000" />
       <workItem from="1671274971403" duration="10000" />
       <workItem from="1671275012709" duration="11017000" />
-      <workItem from="1671358192871" duration="6855000" />
+      <workItem from="1671358192871" duration="8837000" />
     </task>
     <servers />
   </component>

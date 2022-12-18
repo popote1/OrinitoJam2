@@ -2075,6 +2075,7 @@ MonoBehaviour:
   TxtGazText: {fileID: 3107959073666468649}
   GameOverFadeInTime: 3
   CanvasGroupPanelGameOver: {fileID: 1698062085}
+  PanelAutoRadio: {fileID: 2657004895300427340}
   MusicName: {fileID: 1359134935912973936}
 --- !u!1 &3107959074161863846
 GameObject:

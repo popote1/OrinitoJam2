@@ -23,18 +23,27 @@ public class TerrainGeneration : MonoBehaviour
    public float Scale=1;
    public Vector2 Offset;
    [Range(0,1)]public float WhiteThreshHold = 0.5f;
-   [Header("TerrainGeneration")] 
+   [Header("TerrainGeneration")]
+   public int MinDelayInteraction=5;
+   public int MaxDelayInteration=9;
    public float TileScale = 100;
    public GameObject PrefabTile;
    public GameObject[] PrefabsStraight;
    public GameObject[] PrefabsLeft;
    public GameObject[] PrefabsRight;
+   [Header("interacables")]
+   public InteractibleTile[] PrefabsStraightInteractable;
+   public InteractibleTile[] PrefabsLeftInteractable;
+   public InteractibleTile[] PrefabsRightInteractable;
+   public SODialogue[] PossibleInteractions;
 
    private TerrainCell[,] _cells;
    private TerrainCell _startCell;
    private TerrainCell _endCell;
    private List<TerrainCell> Path = new List<TerrainCell>();
    private int _currentIndex;
+   private int _nextInteractableIndex;
+   private bool _nextIsInteractible;
 
    public void SetCells() {
       _cells = new TerrainCell[Width, Height];
@@ -87,7 +96,17 @@ public class TerrainGeneration : MonoBehaviour
 
    private void ChangeCurrentIndex(int newIndex)
    {
+      
       if (_currentIndex == newIndex) return;
+      if (_currentIndex < newIndex) {
+         _nextInteractableIndex--;
+         if (_nextInteractableIndex <= 0) {
+            _nextIsInteractible = true;
+            _nextInteractableIndex = Random.Range(MinDelayInteraction, MaxDelayInteration);
+            MinDelayInteraction++;
+            MaxDelayInteration++;
+         }
+      }
       List<TerrainCell> currentCells = new List<TerrainCell>();
       if(_currentIndex-3>=0) currentCells.Add( Path[_currentIndex-3]);
       if(_currentIndex-2>=0) currentCells.Add( Path[_currentIndex-2]);
@@ -298,6 +317,7 @@ public class TerrainGeneration : MonoBehaviour
       GenerateTiles(tiles[1]);
       GenerateTiles(tiles[2]);
       GenerateTiles(tiles[3]);
+      _nextInteractableIndex = Random.Range(MinDelayInteraction, MaxDelayInteration);
       if (TransformTraked) {
          TransformTraked.position = tiles[0].Tile.transform.position+new Vector3(0,5,0);
          TransformTraked.forward = tiles[1].Tile.transform.position - tiles[0].Tile.transform.position;
@@ -306,16 +326,38 @@ public class TerrainGeneration : MonoBehaviour
       Path = tiles;
    }
 
-   private void GenerateTiles(TerrainCell cell) {
-      GameObject road = cell.Type switch
+   private void GenerateTiles(TerrainCell cell )
+   {
+
+      GameObject road;
+      if (_nextIsInteractible)
       {
-         TerrainCell.RoadType.Start => PrefabTile,
-         TerrainCell.RoadType.End => PrefabTile,
-         TerrainCell.RoadType.Straingt => PrefabsStraight[Random.Range(0, PrefabsStraight.Length)],
-         TerrainCell.RoadType.Left => PrefabsLeft[Random.Range(0, PrefabsLeft.Length)],
-         TerrainCell.RoadType.Right => PrefabsRight[Random.Range(0, PrefabsRight.Length)],
-         _ => throw new ArgumentOutOfRangeException()
-      };
+         InteractibleTile tile;
+         tile = cell.Type switch {
+            TerrainCell.RoadType.Start => PrefabsStraightInteractable[Random.Range(0, PrefabsStraightInteractable.Length)],
+            TerrainCell.RoadType.End => PrefabsStraightInteractable[Random.Range(0, PrefabsStraightInteractable.Length)],
+            TerrainCell.RoadType.Straingt => PrefabsStraightInteractable[Random.Range(0, PrefabsStraightInteractable.Length)],
+            TerrainCell.RoadType.Left => PrefabsLeftInteractable[Random.Range(0, PrefabsLeftInteractable.Length)],
+            TerrainCell.RoadType.Right => PrefabsRightInteractable[Random.Range(0, PrefabsRightInteractable.Length)],
+            _ => throw new ArgumentOutOfRangeException()
+         };
+
+         tile.TriggerZone.Dialogue = PossibleInteractions[Random.Range(0, PossibleInteractions.Length)];
+         road = tile.gameObject;
+         _nextIsInteractible = false;
+      }
+      else
+      {
+         road = cell.Type switch
+         {
+            TerrainCell.RoadType.Start => PrefabTile,
+            TerrainCell.RoadType.End => PrefabTile,
+            TerrainCell.RoadType.Straingt => PrefabsStraight[Random.Range(0, PrefabsStraight.Length)],
+            TerrainCell.RoadType.Left => PrefabsLeft[Random.Range(0, PrefabsLeft.Length)],
+            TerrainCell.RoadType.Right => PrefabsRight[Random.Range(0, PrefabsRight.Length)],
+            _ => throw new ArgumentOutOfRangeException()
+         };
+      }
 
       cell.Tile = Instantiate(road, new Vector3(cell.Pos.x * TileScale, 0, cell.Pos.y * TileScale), Quaternion.identity);
       cell.Tile.transform.SetParent(transform);

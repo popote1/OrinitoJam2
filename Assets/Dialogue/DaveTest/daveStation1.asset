@@ -19,7 +19,7 @@ MonoBehaviour:
   - Note: Oui Donnez Moi ce que vous avez
     ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 9c8ef47331724ec4ba8bea6eb78da634, type: 2}
-    GazGain: 20
+    GazGain: 50
     ChoiceIndex: 0
     ChoiceChange: 0
     IsQuit: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   - Note: Ha, et du coups Je peux vous en prendre la moytier a la limite ?
     ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
-    GazGain: 10
+    GazGain: 30
     ChoiceIndex: 1
     ChoiceChange: 1
     IsQuit: 0
