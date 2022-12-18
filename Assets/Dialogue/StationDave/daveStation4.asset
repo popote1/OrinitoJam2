@@ -10,25 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d898f8dbd6581548925a019d6579757, type: 3}
-  m_Name: Billy Boy Station 2
+  m_Name: daveStation4
   m_EditorClassIdentifier: 
-  ImgPortrait: {fileID: 21300000, guid: 15c5b632d1181c846a16f9b8cd15af6f, type: 3}
-  Title: Billy Murcis
-  Text: Do you want some raccoon for the road ?
+  ImgPortrait: {fileID: 21300000, guid: d539fc76adb63c646a3f3a17ac5ab1d6, type: 3}
+  Title: Dave Station
+  Text: .Be well my good sir, it is some hard time that we live, take good care of
+    you
   ChoiceConsequences:
-  - Note: uh...
+  - Note: you too, bye
     ChoiceCondition: 0
     NextDialogue: {fileID: 0}
     GazGain: 0
     ChoiceIndex: 0
     ChoiceChange: 0
-    IsQuit: 1
-    RemoveTriggerOnExite: 1
-  - Note: nope
-    ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
-    GazGain: 0
-    ChoiceIndex: 0
-    ChoiceChange: 0
-    IsQuit: 1
+    IsQuit: 0
     RemoveTriggerOnExite: 0

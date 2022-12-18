@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgPortrait: {fileID: 21300000, guid: d539fc76adb63c646a3f3a17ac5ab1d6, type: 3}
   Title: Dave Station
-  Text: This will make a happy , here I give you this little song in addition .
+  Text: It is a pleasure to see other faces...It's so sad that this end it up.
   ChoiceConsequences:
-  - Note: goodbye
+  - Note: Well, that's life
     ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
+    NextDialogue: {fileID: 11400000, guid: d9e41bb794c3ca44d9235ce92bb2d82d, type: 2}
     GazGain: 0
     ChoiceIndex: 0
     ChoiceChange: 0
-    IsQuit: 1
-    RemoveTriggerOnExite: 1
+    IsQuit: 0
+    RemoveTriggerOnExite: 0

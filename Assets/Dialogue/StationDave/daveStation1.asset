@@ -24,7 +24,15 @@ MonoBehaviour:
     ChoiceChange: 0
     IsQuit: 0
     RemoveTriggerOnExite: 0
-  - Note: Ha, et du coups Je peux vous en prendre la moytier a la limite ?
+  - Note: I can take the half of it if you prefer ?
+    ChoiceCondition: 0
+    NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
+    GazGain: 10
+    ChoiceIndex: 1
+    ChoiceChange: 1
+    IsQuit: 0
+    RemoveTriggerOnExite: 0
+  - Note: No thank you, I'll be safe for the next station
     ChoiceCondition: 0
     NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
     GazGain: 10

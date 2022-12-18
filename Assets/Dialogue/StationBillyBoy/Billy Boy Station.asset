@@ -17,19 +17,11 @@ MonoBehaviour:
   Text: It is the end of the world and people are bying toilet paper, like they plan
     to shit themselves to death !
   ChoiceConsequences:
-  - Note: yes
+  - Note: ok...
     ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
+    NextDialogue: {fileID: 11400000, guid: 1f89c5fd25e413c4e9a5ce4ca50ca7b0, type: 2}
     GazGain: 20
     ChoiceIndex: 1
     ChoiceChange: 0
     IsQuit: 1
     RemoveTriggerOnExite: 1
-  - Note: Non
-    ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
-    GazGain: 0
-    ChoiceIndex: 0
-    ChoiceChange: 0
-    IsQuit: 1
-    RemoveTriggerOnExite: 0

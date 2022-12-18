@@ -16,27 +16,11 @@ MonoBehaviour:
   Title: Bob Tower
   Text: Oh? Customers, you've come this far !
   ChoiceConsequences:
-  - Note: Found this song, does that speak to you ?
+  - Note: yep, do you have some gas left?
     ChoiceCondition: 1
     NextDialogue: {fileID: 11400000, guid: 902423e4576d4ae4f89f35ce3ee519cf, type: 2}
     GazGain: 0
     ChoiceIndex: 0
     ChoiceChange: 0
     IsQuit: 0
-    RemoveTriggerOnExite: 0
-  - Note: ' Done moi ton essence'
-    ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
-    GazGain: 10
-    ChoiceIndex: 0
-    ChoiceChange: 0
-    IsQuit: 1
-    RemoveTriggerOnExite: 1
-  - Note: Aurevoir
-    ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
-    GazGain: 0
-    ChoiceIndex: 0
-    ChoiceChange: 0
-    IsQuit: 1
     RemoveTriggerOnExite: 0

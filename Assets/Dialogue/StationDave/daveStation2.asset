@@ -18,7 +18,7 @@ MonoBehaviour:
   ChoiceConsequences:
   - Note: thanks
     ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
+    NextDialogue: {fileID: 11400000, guid: e035cf77870cd1242afbcf2c7e4f550b, type: 2}
     GazGain: 0
     ChoiceIndex: 0
     ChoiceChange: 0

@@ -10,25 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d898f8dbd6581548925a019d6579757, type: 3}
-  m_Name: Billy Boy Station 2
+  m_Name: Bob station 4
   m_EditorClassIdentifier: 
-  ImgPortrait: {fileID: 21300000, guid: 15c5b632d1181c846a16f9b8cd15af6f, type: 3}
-  Title: Billy Murcis
-  Text: Do you want some raccoon for the road ?
+  ImgPortrait: {fileID: 21300000, guid: f748d094b9c84614da8a7258bcd2b6dc, type: 3}
+  Title: Bob Tower
+  Text: Anyway, here your gas, be safe partner, this country is no more what it was...
   ChoiceConsequences:
-  - Note: uh...
+  - Note: thanks man
     ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
-    GazGain: 0
-    ChoiceIndex: 0
+    NextDialogue: {fileID: 11400000, guid: 902423e4576d4ae4f89f35ce3ee519cf, type: 2}
+    GazGain: 30
+    ChoiceIndex: 2
     ChoiceChange: 0
     IsQuit: 1
     RemoveTriggerOnExite: 1
-  - Note: nope
-    ChoiceCondition: 0
-    NextDialogue: {fileID: 0}
-    GazGain: 0
-    ChoiceIndex: 0
-    ChoiceChange: 0
-    IsQuit: 1
-    RemoveTriggerOnExite: 0
