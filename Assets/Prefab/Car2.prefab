@@ -11327,13 +11327,19 @@ MonoBehaviour:
   _maxSpeedToInteract: 2
   _maxGaz: 50
   _gazDecrease: 1
-  _musics: []
+  _musics:
+  - {fileID: 11400000, guid: be0322077c914c740b9136161227ff3f, type: 2}
+  - {fileID: 11400000, guid: d5f53a95e7db3bb4d97953ce1087a51c, type: 2}
+  - {fileID: 11400000, guid: 10349a9ef8e626b44b3a41fa8767b08e, type: 2}
+  - {fileID: 11400000, guid: 079ba66fbfdb3b34ba668588b25a1d02, type: 2}
   _asMusic: {fileID: 4880473397380862040}
   WalkManSFXVolume: 1
   WalkManSFXClips:
   - {fileID: 8300000, guid: 95036db1e177f3f459c27a683b65bf8e, type: 3}
   - {fileID: 8300000, guid: def1eb22ee4ad58498526ab0312c1b46, type: 3}
   - {fileID: 8300000, guid: 46ec4ab21e6a5e949b217d7b09119b63, type: 3}
+  GameOverMusicVolume: 1
+  GameoverMusicClips: {fileID: 8300000, guid: 4540a8751c5cc1f4a84debfd973959d0, type: 3}
 --- !u!114 &816767463
 MonoBehaviour:
   m_ObjectHideFlags: 0

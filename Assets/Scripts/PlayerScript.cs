@@ -23,6 +23,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private AudioSource _asMusic;
     [Range(0,1)]public float WalkManSFXVolume = 1;
     public AudioClip[] WalkManSFXClips;
+    [Range(0,1)]public float GameOverMusicVolume = 1;
+    public AudioClip GameoverMusicClips;
     
     
     
@@ -103,6 +105,7 @@ public class PlayerScript : MonoBehaviour
         _carController.AsMotorSound.Stop();
         _hudManager.OpenGameOverPanel();
         IsPlayng = false;
+        if(AudioManager.Instance!=null)   AudioManager.Instance.PlayMusic(GameoverMusicClips , GameOverMusicVolume);
     }
 
     public void QuitDiscution(bool triggerIsRemove = false) {
@@ -127,12 +130,29 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void ChangeSong(int value) {
+    public void ChangeSong(int value) {
         if (AudioManager.Instance == null) return;
         _currentMusic = (_currentMusic + value) % _musics.Length ;
+        if (_currentMusic < 0) _currentMusic = _musics.Length - 1;
         AudioManager.Instance.PlayMusic(_musics[_currentMusic].AudioClip);
         _hudManager.SetMusicData(_musics[_currentMusic]);
         AudioManager.Instance.PlaySFX(WalkManSFXClips[Random.Range(0,WalkManSFXClips.Length)],WalkManSFXVolume);
         
+    }
+
+    public void PauseTheSong()
+    {
+        if (AudioManager.Instance == null) return;
+        AudioManager.Instance.PauseMusic();
+        _musicIsPlaying = true;
+        AudioManager.Instance.PlaySFX(WalkManSFXClips[Random.Range(0,WalkManSFXClips.Length)],WalkManSFXVolume);
+    }
+
+    public void RestartTheSong()
+    {
+        if (AudioManager.Instance == null) return;
+        AudioManager.Instance.RestartMusic();
+        _musicIsPlaying = true;
+        AudioManager.Instance.PlaySFX(WalkManSFXClips[Random.Range(0,WalkManSFXClips.Length)],WalkManSFXVolume);
     }
 }

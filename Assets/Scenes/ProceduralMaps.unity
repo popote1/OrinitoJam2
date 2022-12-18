@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -352,6 +352,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1383662156, guid: a9db9ce5ad33c204dbb7b880c1a8720a, type: 3}
+      propertyPath: PlayerScript
+      value: 
+      objectReference: {fileID: 778244004}
     - target: {fileID: 3107959073454596542, guid: a9db9ce5ad33c204dbb7b880c1a8720a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -667,17 +671,17 @@ PrefabInstance:
     - target: {fileID: 6106010853423694359, guid: fdd188ea2c465514a867423bf0d3ff63,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.62229615
+      value: 0.6222961
       objectReference: {fileID: 0}
     - target: {fileID: 6106010853423694359, guid: fdd188ea2c465514a867423bf0d3ff63,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000004939814
+      value: 0.0000007220548
       objectReference: {fileID: 0}
     - target: {fileID: 6106010853423694359, guid: fdd188ea2c465514a867423bf0d3ff63,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000039270514
+      value: -0.0000005740192
       objectReference: {fileID: 0}
     - target: {fileID: 6106010853423694359, guid: fdd188ea2c465514a867423bf0d3ff63,
         type: 3}
@@ -842,7 +846,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075785481}
-  m_LocalRotation: {x: 0.62229615, y: -0.00000004939814, z: 0.000000039270514, w: 0.78278196}
+  m_LocalRotation: {x: 0.6222961, y: 0.0000007220548, z: -0.0000005740192, w: 0.78278196}
   m_LocalPosition: {x: 410.18256, y: 33.68, z: 1559.9192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -930,17 +934,17 @@ PrefabInstance:
       objectReference: {fileID: 146844299}
     - target: {fileID: 816767461, guid: 2339f7dbb3713af41bd2a9a15fa0b303, type: 3}
       propertyPath: _musics.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 816767461, guid: 2339f7dbb3713af41bd2a9a15fa0b303, type: 3}
       propertyPath: _musics.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 079ba66fbfdb3b34ba668588b25a1d02,
+      objectReference: {fileID: 11400000, guid: be0322077c914c740b9136161227ff3f,
         type: 2}
     - target: {fileID: 816767461, guid: 2339f7dbb3713af41bd2a9a15fa0b303, type: 3}
       propertyPath: _musics.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 357223cc92f977547b5a79828ddea3e8,
+      objectReference: {fileID: 11400000, guid: d5f53a95e7db3bb4d97953ce1087a51c,
         type: 2}
     - target: {fileID: 816767461, guid: 2339f7dbb3713af41bd2a9a15fa0b303, type: 3}
       propertyPath: _conversationController
