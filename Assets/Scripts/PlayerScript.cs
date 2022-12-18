@@ -51,8 +51,7 @@ public class PlayerScript : MonoBehaviour
         if (index == 0) return true;
         return Choises[index];
     }
-    void Start() { 
-        IsPlayng = true;
+    void Start() {
         _gaz = _maxGaz;
         if (_musics != null && _musics.Length > 0) {
             _asMusic.clip = _musics[0].AudioClip;
@@ -61,6 +60,11 @@ public class PlayerScript : MonoBehaviour
             _musicIsPlaying = true;
             _asMusic.Play();
         }
+    }
+
+    public void SetIsPlaying() {
+        IsPlayng = true;
+        _carController.CanControl = true;
     }
 
     // Update is called once per frame

@@ -12,6 +12,9 @@ public class TerrainGeneration : MonoBehaviour
 {
    public int Height = 30;
    public int Width = 10;
+   public bool UsTransformTracked;
+   public Transform TransformTraked;
+   public int DiscoverLength;
 
    public bool UsDebugSprite;
    public SpriteRenderer PrefabsSprite;
@@ -23,12 +26,17 @@ public class TerrainGeneration : MonoBehaviour
    [Header("TerrainGeneration")] 
    public float TileScale = 100;
    public GameObject PrefabTile;
+   public GameObject[] PrefabsStraight;
+   public GameObject[] PrefabsLeft;
+   public GameObject[] PrefabsRight;
 
    private TerrainCell[,] _cells;
    private TerrainCell _startCell;
    private TerrainCell _endCell;
+   private List<TerrainCell> Path = new List<TerrainCell>();
+   private int _currentIndex;
 
-   public void Start() {
+   public void SetCells() {
       _cells = new TerrainCell[Width, Height];
       for (int x = 0; x < Width; x++) {
          for (int z = 0; z < Height; z++)
@@ -48,6 +56,13 @@ public class TerrainGeneration : MonoBehaviour
       return _cells[pos.x, pos.y];
    }
 
+   public Vector2Int GetCordinatesFromWorldPos(Vector3 pos)
+   {
+      int x = Mathf.RoundToInt(pos.x / 100f);
+      int y = Mathf.RoundToInt(pos.z / 100f);
+      return new Vector2Int(x, y);
+   }
+
    public List<TerrainCell> GetCellNeighbour(TerrainCell cell) {
       List<TerrainCell> returnList = new List<TerrainCell>();
       if(GetCell(cell.Pos+new Vector2Int(1,0))!=null)returnList.Add(GetCell(cell.Pos+new Vector2Int(1,0)));
@@ -60,7 +75,47 @@ public class TerrainGeneration : MonoBehaviour
    private void Update()
    {
       if(IsUpdate)UpdatePerlinNoise();
+      if (UsTransformTracked) TrackPos();
+
+   }
+
+   private void TrackPos() {
+      Vector2Int cor = GetCordinatesFromWorldPos(TransformTraked.position);
+      TerrainCell cell = GetCell(cor);
+      if (Path.Contains(cell)) ChangeCurrentIndex( Path.IndexOf(cell));
       
+      Debug.Log(cor);
+   }
+
+   private void ChangeCurrentIndex(int newIndex)
+   {
+      if (_currentIndex == newIndex) return;
+      List<TerrainCell> currentCells = new List<TerrainCell>();
+      if(_currentIndex-3>=0) currentCells.Add( Path[_currentIndex-3]);
+      if(_currentIndex-2>=0) currentCells.Add( Path[_currentIndex-2]);
+      if(_currentIndex-1>=0) currentCells.Add( Path[_currentIndex-1]); 
+      currentCells.Add( Path[_currentIndex]);
+      if(_currentIndex+3<Path.Count) currentCells.Add( Path[_currentIndex+3]);
+      if(_currentIndex+2<Path.Count) currentCells.Add( Path[_currentIndex+2]);
+      if(_currentIndex+1<Path.Count) currentCells.Add( Path[_currentIndex+1]);
+
+      _currentIndex = newIndex;
+      List<TerrainCell> newList = new List<TerrainCell>();
+      if(_currentIndex-3>=0) newList.Add( Path[_currentIndex-3]);
+      if(_currentIndex-2>=0) newList.Add( Path[_currentIndex-2]);
+      if(_currentIndex-1>=0) newList.Add( Path[_currentIndex-1]); 
+      newList.Add( Path[_currentIndex]);
+      if(_currentIndex+3<Path.Count) newList.Add( Path[_currentIndex+3]);
+      if(_currentIndex+2<Path.Count) newList.Add( Path[_currentIndex+2]);
+      if(_currentIndex+1<Path.Count) newList.Add( Path[_currentIndex+1]);
+      
+      foreach (var cell in currentCells) { 
+         if(!newList.Contains(cell)) Destroy(cell.Tile);
+      }
+
+      foreach (var cell in newList) {
+         if(!currentCells.Contains(cell))GenerateTiles(cell);
+      }
    }
 
    private void UpdatePerlinNoise()
@@ -164,14 +219,109 @@ public class TerrainGeneration : MonoBehaviour
       return returnList;
    }
 
-   [ContextMenu("GenerateTerrain")]
-   private void GenerateTerrain()
+   private void  SetTileType(List<TerrainCell> cells)
    {
+      for (int i = 0; i < cells.Count; i++)
+      {
+         TerrainCell prev;
+         TerrainCell current;
+         TerrainCell Next;
+
+         if (i == 0) prev = null;
+         else prev = cells[i - 1];
+         current = cells[i];
+         if (i + 1 >= cells.Count) Next = null;
+         else Next = cells[i + 1];
+
+         if (prev == null) {
+            current.EnterDirection = Next.Pos - current.Pos;
+            current.Type = TerrainCell.RoadType.Start;
+            continue;
+         }
+         
+         
+         current.EnterDirection = current.Pos - prev.Pos;
+         if (Next == null) {
+            current.Type = TerrainCell.RoadType.End;
+            continue;
+         }
+
+         current.Type = GetRoadType(current, Next);
+      }
+   }
+
+   private TerrainCell.RoadType GetRoadType(TerrainCell from, TerrainCell to)
+   {
+      Vector2Int dir = to.Pos - from.Pos;
+      if (from.EnterDirection == Vector2Int.up) {
+         if (dir ==Vector2Int.up) return TerrainCell.RoadType.Straingt;
+         if (dir ==Vector2Int.left) return TerrainCell.RoadType.Left;
+         if (dir == Vector2Int.right) return TerrainCell.RoadType.Right;
+      }
+
+      if (from.EnterDirection == Vector2Int.right)
+      {
+         if (dir == Vector2Int.right) return TerrainCell.RoadType.Straingt;
+         if (dir == Vector2Int.down) return TerrainCell.RoadType.Right;
+         if (dir == Vector2Int.up) return TerrainCell.RoadType.Left;
+      }
+
+      if (from.EnterDirection == Vector2Int.down)
+      {
+         if (dir == Vector2Int.down) return TerrainCell.RoadType.Straingt;
+         if (dir == Vector2Int.right) return TerrainCell.RoadType.Left;
+         if (dir == Vector2Int.left) return TerrainCell.RoadType.Right;
+      }
+
+      if (from.EnterDirection == Vector2Int.left)
+      {
+         if (dir == Vector2Int.left) return TerrainCell.RoadType.Straingt;
+         if (dir == Vector2Int.up) return TerrainCell.RoadType.Right;
+         if (dir == Vector2Int.down) return TerrainCell.RoadType.Left;
+      }
+
+      Debug.LogWarning("dir is Invalide =>"+dir);
+      return TerrainCell.RoadType.End;
+   }
+
+   [ContextMenu("GenerateTerrain")]
+   public void GenerateTerrain()
+   {
+      SetCells();
       UpdatePerlinNoise();
       PickStartAndEnd();
       List<TerrainCell> tiles = AStart();
-      foreach (var tile in tiles) {
-         tile.Tile = Instantiate(PrefabTile, new Vector3(tile.Pos.x * TileScale, 0, tile.Pos.y * TileScale), Quaternion.identity);
+      SetTileType(tiles);
+      //foreach (var tile in tiles) {
+      //   GenerateTiles(tile);
+      //}
+      //tiles[0].Tile.SetActive(true);
+      GenerateTiles(tiles[0]);
+      GenerateTiles(tiles[1]);
+      GenerateTiles(tiles[2]);
+      GenerateTiles(tiles[3]);
+      if (TransformTraked) {
+         TransformTraked.position = tiles[0].Tile.transform.position+new Vector3(0,5,0);
+         TransformTraked.forward = tiles[1].Tile.transform.position - tiles[0].Tile.transform.position;
       }
+      _currentIndex = 0;
+      Path = tiles;
+   }
+
+   private void GenerateTiles(TerrainCell cell) {
+      GameObject road = cell.Type switch
+      {
+         TerrainCell.RoadType.Start => PrefabTile,
+         TerrainCell.RoadType.End => PrefabTile,
+         TerrainCell.RoadType.Straingt => PrefabsStraight[Random.Range(0, PrefabsStraight.Length)],
+         TerrainCell.RoadType.Left => PrefabsLeft[Random.Range(0, PrefabsLeft.Length)],
+         TerrainCell.RoadType.Right => PrefabsRight[Random.Range(0, PrefabsRight.Length)],
+         _ => throw new ArgumentOutOfRangeException()
+      };
+
+      cell.Tile = Instantiate(road, new Vector3(cell.Pos.x * TileScale, 0, cell.Pos.y * TileScale), Quaternion.identity);
+      cell.Tile.transform.SetParent(transform);
+      cell.Tile.transform.forward = new Vector3(cell.EnterDirection.x, 0, cell.EnterDirection.y);
+      
    }
 }

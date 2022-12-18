@@ -7,8 +7,12 @@ public class TerrainCell
 {
 
     public enum RoadType {
-        None,straing, left, right
-    } 
+        Start ,End,Straingt, Left, Right
+    }
+
+    public RoadType Type;
+
+    public Vector2Int EnterDirection;
     public Vector2Int Pos;
     public SpriteRenderer SpriteRenderer;
     public float Value;
