@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d898f8dbd6581548925a019d6579757, type: 3}
+  m_Name: daveStation1
+  m_EditorClassIdentifier: 
+  ImgPortrait: {fileID: 21300000, guid: d539fc76adb63c646a3f3a17ac5ab1d6, type: 3}
+  Title: Dave Station
+  Text: Hello sir, Do you want some gas? They are not many left...
+  ChoiceConsequences:
+  - Note: Yes, give me what you have
+    ChoiceCondition: 0
+    NextDialogue: {fileID: 11400000, guid: 9c8ef47331724ec4ba8bea6eb78da634, type: 2}
+    GazGain: 50
+    ChoiceIndex: 0
+    ChoiceChange: 0
+    IsQuit: 0
+    RemoveTriggerOnExite: 0
+  - Note: I can take the half of it if you prefer ?
+    ChoiceCondition: 0
+    NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
+    GazGain: 10
+    ChoiceIndex: 1
+    ChoiceChange: 1
+    IsQuit: 0
+    RemoveTriggerOnExite: 0
+  - Note: No thank you, I'll be safe for the next station
+    ChoiceCondition: 0
+    NextDialogue: {fileID: 11400000, guid: 76d7e4d5070136843b82188b9a4c6d46, type: 2}
+    GazGain: 30
+    ChoiceIndex: 1
+    ChoiceChange: 1
+    IsQuit: 0
+    RemoveTriggerOnExite: 0
