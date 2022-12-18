@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6338915443590379486}
   - component: {fileID: 4052286053525162173}
   - component: {fileID: 760036777011842320}
+  - component: {fileID: 4086587661420801895}
   m_Layer: 0
   m_Name: Mountin_3
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4086587661420801895
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367132097496760627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -910757248713033557, guid: 0bb3264b733c66548b96e3598c3a5acf, type: 3}
 --- !u!1 &8880151431129733578
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +107,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4693732726660846891}
-  - component: {fileID: 8346430865362552715}
   m_Layer: 0
   m_Name: Mountain_3
   m_TagString: Untagged
@@ -116,19 +130,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8346430865362552715
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880151431129733578}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.23, y: 6.14, z: 7.07}
-  m_Center: {x: -0.52, y: 1.98, z: 1.02}
 --- !u!1 &8915985482528202398
 GameObject:
   m_ObjectHideFlags: 0
