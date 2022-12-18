@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ConversationController : MonoBehaviour
 {
@@ -15,6 +17,11 @@ public class ConversationController : MonoBehaviour
     [SerializeField] private TMP_Text _txtDiscution;
     [SerializeField] private Transform _transformButtonHolder;
     [SerializeField] private UIButtonDialogueComponent _prefabButton;
+    [Header("Sounds")]
+    [Range(0,1)]public float OpenVolume = 1;
+    public AudioClip[] OpenClips;
+    [Range(0,1)]public float CloseVolume = 1;
+    public AudioClip[] CloseClips;
 
     private SODialogue _currentDialogue;
     
@@ -30,6 +37,10 @@ public class ConversationController : MonoBehaviour
 
     public void OpenDiscutionPanel(SODialogue dialogue) {
         _panelDiscution.SetActive(true);
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(OpenClips[Random.Range(0,OpenClips.Length)], OpenVolume);
+        }
         LoadSODialogue(dialogue);
     }
 
@@ -85,5 +96,9 @@ public class ConversationController : MonoBehaviour
     {
         _panelDiscution.SetActive(false);
         _playerScript.QuitDiscution(triggerIsRemove);
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(CloseClips[Random.Range(0,CloseClips.Length)], CloseVolume);
+        }
     }
 }

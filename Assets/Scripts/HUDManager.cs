@@ -9,8 +9,10 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     public PlayerScript PlayerScript;
+    [Header("GazParameters")]
     public Slider sliderGaz;
     public TMP_Text TxtGazText;
+    public GameObject panelAiguille;
 
     [Header("GameOver")] public float GameOverFadeInTime = 0.5f;
     public CanvasGroup CanvasGroupPanelGameOver;
@@ -21,6 +23,7 @@ public class HUDManager : MonoBehaviour
     public void SetGaz(float actualGaz, float maxGaz) {
         sliderGaz.value = actualGaz / maxGaz;
         TxtGazText.text = Mathf.RoundToInt(actualGaz) + "/" + Mathf.RoundToInt(maxGaz);
+        panelAiguille.transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(80, -80, actualGaz / maxGaz));
     }
 
     public void OpenGameOverPanel()

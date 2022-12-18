@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private TriggerZone _currentTriggerZone;
     [SerializeField] private float _maxSpeedToInteract = 2;
     [Header("GazControl")] 
-    [SerializeField] private float _maxGaz=50;
+    [SerializeField] private float _maxGaz=70;
     [SerializeField] private float _gazDecrease = 1;
 
     [SerializeField] private SOMusic[] _musics;
@@ -36,6 +36,7 @@ public class PlayerScript : MonoBehaviour
         get => _gaz;
         set {
             _gaz=value;
+            if (_gaz > _maxGaz) _gaz = _maxGaz;
             _hudManager.SetGaz(_gaz , _maxGaz);
 
             if (IsPlayng && _gaz <= 0)
@@ -49,6 +50,7 @@ public class PlayerScript : MonoBehaviour
     private float _gaz;
     private int _currentMusic;
     private bool _musicIsPlaying;
+    private bool _musicwasOn;
     private float _musicTimer;
 
     public static bool IsConditionValue(int index) {
@@ -56,7 +58,7 @@ public class PlayerScript : MonoBehaviour
         return Choises[index];
     }
     void Start() {
-        _gaz = _maxGaz;
+        Gaz = _maxGaz;
         if (AudioManager.Instance !=null&&_musics != null && _musics.Length > 0) {
             AudioManager.Instance.PlayMusic(_musics[0].AudioClip);
             _currentMusic = 0;
@@ -84,6 +86,8 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space)&&!_isInDiscution) {
                 _carController.CanControl = false;
                 _conversationController.OpenDiscutionPanel(_currentTriggerZone.Dialogue);
+                
+                PauseTheSong();
             }
         }
 
@@ -111,6 +115,7 @@ public class PlayerScript : MonoBehaviour
     public void QuitDiscution(bool triggerIsRemove = false) {
         _carController.CanControl = true;
         _isInDiscution = false;
+        if(_musicwasOn)RestartTheSong();
         if (triggerIsRemove) {
             _currentTriggerZone.gameObject.SetActive(false);
             _currentTriggerZone = null;
@@ -142,6 +147,7 @@ public class PlayerScript : MonoBehaviour
 
     public void PauseTheSong()
     {
+        if (_musicIsPlaying) _musicwasOn=true;
         if (AudioManager.Instance == null) return;
         AudioManager.Instance.PauseMusic();
         _musicIsPlaying = true;
